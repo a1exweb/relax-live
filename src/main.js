@@ -20,6 +20,7 @@ import sendForms from './modules/sendForms';
 import serviceList from './modules/serviceList';
 import checkName from './modules/checkName';
 import servicesSlider from './modules/servicesSlider';
+import scrollMenu from './modules/scrollMenu';
 
 phoneNumbers();
 popups();
@@ -40,3 +41,4 @@ sendForms();
 serviceList();
 servicesSlider();
 checkName();
+scrollMenu();

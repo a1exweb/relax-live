@@ -10045,3 +10045,13 @@ strong {
 #feedback5 ._message-error {
   top: -5px;
 }
+
+.header_active {
+  position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #6b5b51;
+    max-width: unset;
+    z-index: 999;
+}
