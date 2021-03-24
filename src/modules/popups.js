@@ -31,6 +31,7 @@ const headerMenu = () => {
         const buttonsRepairTypes = document.querySelectorAll('.nav-popup-repair-types .button_o');
         const buttonsDesigns = document.querySelectorAll('#nav-list-popup-designs .button_o');
         const mobileRows = document.querySelectorAll('.popup-repair-types-content-table-wrap .mobile-row');
+        const popupPrivacy = document.querySelector('.popup-privacy');
 
         const closePopupButtons = () => {
             buttonsRepairTypes.forEach(item => {
@@ -87,13 +88,11 @@ const headerMenu = () => {
             scrollOff();
         }
         if (target.matches('.link-privacy') && !target.matches('.link-privacy_consultation')) {
-            const popupPrivacy = document.querySelector('.popup-privacy');
             popupPrivacy.classList.add('visible');
             scrollOff();
         }
 
         if (target.matches('.link-privacy_consultation')) {
-            const popupPrivacy = document.querySelector('.popup-privacy');
             popupPrivacy.classList.add('visible');
             popupPrivacy.classList.add('popup-privacy_consultation');
             scrollOff();
@@ -105,8 +104,8 @@ const headerMenu = () => {
         }
         if (target.closest('.close') && target.parentElement.closest('.popup-privacy_consultation')) {
             closePopupButtons();
-            closeAllPopup();
             popupPrivacy.classList.remove('popup-privacy_consultation');
+            popupPrivacy.classList.remove('visible');
         }
         if (target.parentElement.closest('.popup-privacy')) {
             const popup = document.querySelectorAll('.popup-privacy')
@@ -114,10 +113,15 @@ const headerMenu = () => {
                 item.classList.remove('visible')
             })
         }
-        if (target.classList.contains('popup')){
+        if (target.classList.contains('popup') && !target.classList.contains('popup-privacy_consultation')){
             closePopupButtons();
             closeAllPopup();
             popupDialogMenu.classList.remove('popup-dialog-menu_active');
+        }
+        if (target.classList.contains('popup') && target.classList.contains('popup-privacy_consultation')) {
+            closePopupButtons();
+            popupPrivacy.classList.remove('popup-privacy_consultation');
+            popupPrivacy.classList.remove('visible');
         }
     });
 };
