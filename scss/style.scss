@@ -8161,6 +8161,7 @@ div.wave-block:nth-child(17):after {
   color: rgba(50, 40, 35, 0.5);
   z-index: 105;
   cursor: pointer;
+  z-index: 999;
 }
 
 .close:after {

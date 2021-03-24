@@ -22,7 +22,7 @@ class Validate {
             });
         });
         this.elementsForm.forEach(item => {
-            item.addEventListener('input', () => {
+            item.addEventListener('change', () => {
                 this.checkElements.bind(this, item)();
             })
         });
@@ -45,10 +45,12 @@ class Validate {
             this.showError(item);
         }
     }
+    
     checkName(item) {
         if (/^[а-яА-ЯЁё]{2,}$/gi.test(item.value)) {
             this.showSuccess(item);
-        } else {
+        }
+        else {
             this.showError(item);
         }
     }

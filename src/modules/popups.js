@@ -86,14 +86,33 @@ const headerMenu = () => {
             openPopupRepairTypes();
             scrollOff();
         }
-        if (target.matches('.link-privacy')) {
+        if (target.matches('.link-privacy') && !target.matches('.link-privacy_consultation')) {
             const popupPrivacy = document.querySelector('.popup-privacy');
             popupPrivacy.classList.add('visible');
             scrollOff();
         }
-        if (target.closest('.close')) {
+
+        if (target.matches('.link-privacy_consultation')) {
+            const popupPrivacy = document.querySelector('.popup-privacy');
+            popupPrivacy.classList.add('visible');
+            popupPrivacy.classList.add('popup-privacy_consultation');
+            scrollOff();
+        }
+
+        if (target.closest('.close') && !target.parentElement.closest('.popup-privacy_consultation')) {
             closePopupButtons();
             closeAllPopup();
+        }
+        if (target.closest('.close') && target.parentElement.closest('.popup-privacy_consultation')) {
+            closePopupButtons();
+            closeAllPopup();
+            popupPrivacy.classList.remove('popup-privacy_consultation');
+        }
+        if (target.parentElement.closest('.popup-privacy')) {
+            const popup = document.querySelectorAll('.popup-privacy')
+            popup.forEach(item => {
+                item.classList.remove('visible')
+            })
         }
         if (target.classList.contains('popup')){
             closePopupButtons();
