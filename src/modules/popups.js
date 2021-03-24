@@ -44,6 +44,13 @@ const headerMenu = () => {
             });
             mobileRows.forEach(item => item.style.display = `none`);
         }
+
+        const popupPrivacyConsultationClose = () => {
+            closePopupButtons();
+            popupPrivacy.classList.remove('popup-privacy_consultation');
+            popupPrivacy.classList.remove('visible');
+        }
+
         if (target.closest('.close-menu')) {
             toggleMenu();
             scrollOn();
@@ -103,9 +110,7 @@ const headerMenu = () => {
             closeAllPopup();
         }
         if (target.closest('.close') && target.parentElement.closest('.popup-privacy_consultation')) {
-            closePopupButtons();
-            popupPrivacy.classList.remove('popup-privacy_consultation');
-            popupPrivacy.classList.remove('visible');
+            popupPrivacyConsultationClose();
         }
         if (target.parentElement.closest('.popup-privacy')) {
             const popup = document.querySelectorAll('.popup-privacy')
@@ -119,9 +124,7 @@ const headerMenu = () => {
             popupDialogMenu.classList.remove('popup-dialog-menu_active');
         }
         if (target.classList.contains('popup') && target.classList.contains('popup-privacy_consultation')) {
-            closePopupButtons();
-            popupPrivacy.classList.remove('popup-privacy_consultation');
-            popupPrivacy.classList.remove('visible');
+            popupPrivacyConsultationClose();
         }
     });
 };
